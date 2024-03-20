@@ -51,6 +51,10 @@ class EventViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
     
     def perform_create(self, serializer):
+        name = serializer.validated_data.get('name')
+        if Event.objects.filter(user=self.request.user, name=name).exists():
+            raise PermissionDenied("Event with the same name already exists")
+        
         deadline = serializer.validated_data.get('deadline')
         if deadline < timezone.now():
             raise PermissionDenied("Deadline cannot be in the past")
