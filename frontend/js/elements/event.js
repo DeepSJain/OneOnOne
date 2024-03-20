@@ -373,7 +373,7 @@ class Event extends React.Component {
                 eventResize: this.eventUpdateAfter,
                 selectable: false,
                 editable: true,
-                unselectAuto: false
+                scrollTime: '08:00:00'
             });
         calendar.render();
         

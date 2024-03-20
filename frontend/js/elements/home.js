@@ -49,6 +49,7 @@ class Events extends React.Component {
                 editable: false,
                 longPressDelay: 250,
                 unselectAuto: false,
+                scrollTime: '08:00:00'
             });
             calendar.render();
 

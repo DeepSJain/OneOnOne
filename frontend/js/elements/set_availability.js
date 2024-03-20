@@ -222,6 +222,7 @@ class SetAvailability extends React.Component {
                 select: this.select,
                 unselect: this.unselect,
                 unselectAuto: false,
+                scrollTime: '08:00:00'
             });
         calendar.render();
 

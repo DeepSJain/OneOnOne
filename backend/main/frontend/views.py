@@ -85,7 +85,7 @@ def event(request, event_id):
         }
     })
 
-def settings(request, event_id):
+def settings(request):
     return render(request, "base.html", {
         "title": "Event",
         "js_files": ["elements/settings.js"],

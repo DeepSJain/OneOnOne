@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             unselect: unselect,
             datesSet: datesSet,
             unselectAuto: false,
+            scrollTime: '08:00:00'
         });
     calendar.render();
 });

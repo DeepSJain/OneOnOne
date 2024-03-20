@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             editable: false,
             longPressDelay: 250,
             unselectAuto: false,
+            scrollTime: '08:00:00'
         });
 
         calendar1.addEvent({
@@ -49,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             editable: false,
             longPressDelay: 250,
             unselectAuto: false,
+            scrollTime: '08:00:00'
         });
 
         calendar2.addEvent({

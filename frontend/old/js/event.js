@@ -314,6 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
             eventResizeStop: eventUpdateStop,
             datesSet: datesSet,
             unselectAuto: false,
+            scrollTime: '08:00:00'
         });
 
     availibility.forEach(function(event) {

@@ -1,1 +1,1 @@
-python3 main/manage.py runserver
+python3 backend/main/manage.py runserver
