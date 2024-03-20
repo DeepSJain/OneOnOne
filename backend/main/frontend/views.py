@@ -15,14 +15,6 @@ def index(request):
         "url_params": {}
     })
     
-def confirmation(request):
-    return render(request, "base.html", {
-        "title": "Confirmation",
-        "js_files": ["elements/confirmation.js"],
-        "css_files": [],
-        "url_params": {}
-    })
-    
 def home(request):
     return render(request, "base.html", {
         "title": "Home",
@@ -103,7 +95,7 @@ def settings(request, event_id):
 
 fromend_urls = [
     path("", index, name="index"),
-    path("confirmation/", confirmation, name="confirmation"),
+    
     path("contacts/", contacts, name="contacts"),
     path("create_event/", create_event, name="create_event"),
     
