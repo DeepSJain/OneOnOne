@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+.logo {
+    width: 100px;
+}
+
+.title-instructions {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.title-instructions h1 {
+    font-size: 1.5em;
+}
+
+.main-calendar {
+    min-width: calc(min(max(45vw, 500px), 100%));
+    max-width: 900px;
+    margin: auto auto;
+    min-height: 50vh;
+    max-height: 300px;
+}
+
+.action_row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* height: 10vh; */
+}
+.action_row button {
+    margin: 10px;
+    /* width: 20vw; */
+    min-width: 100px;
+    max-width: 200px;
+    white-space: normal;
+}
+
+.table-action-button {
+    width: 100%;
+}
+
+#search-contacts {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+.new-contact-input {
+    width: 100%;
+
+}
+
+#navigation_buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+#navigation_buttons button {
+    margin: 10px;
+    width: 20vw;
+}
+#navigation_buttons .back-button {
+    margin-right: auto;
+}
+#navigation_buttons .center-button {
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#navigation_buttons .next-button {
+    margin-left: auto;
+}
+
+.events {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.event {
+    margin: 10px;
+    padding: 10px;
+    width: 500px;
+}
+
+.event-center {
+    align-self: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.display-none {
+    display: none;
+}
+
+
+* {
+    --fc-today-bg-color: !important;
+}
+
+#event-contacts-table {
+    min-width: 300px;
+    max-width: 500px;
+}
+#contacts-table #contact-list {
+    display: block;
+    max-height: 300px;
+    overflow: auto;
+}
+#event-contacts-table #contact-list {
+    display: block;
+    max-height: 250px;
+    overflow: auto;
+}
+#contacts-table tr, #event-contacts-table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.contact-row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.contact-no-list {
+    width: calc( 100% - 1em )
+}

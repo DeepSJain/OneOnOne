@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>1on1</title>
+        
+        <link href="css/daisyui.css" rel="stylesheet" type="text/css">
+        <link href="css/swiper.css" rel="stylesheet">
+        <link href="css/index.css" rel="stylesheet">
+        
+        <script src="js/tailwind.js"></script>
+        <script src="js/swiper.js"></script>
+        <!-- <script src='js/fullcalendar.js'></script> -->
+        <!-- <script src="js/theme-change.js"></script> -->
+        <script src="js/index.js"></script>
+    </head>
+    <body>
+        <div class="drawer lg:drawer-open">
+            <!-- <input id="my-drawer-2" type="checkbox" class="drawer-toggle"> -->
+            <div class="drawer-content">
+                <div class="min-h-screen flex flex-col">
+                    <div class="navbar bg-base-100 text-base-content sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] shadow-sm">
+                        <div class="flex-none">
+                            <!-- <label for="my-drawer-2" class="btn btn-square btn-ghost drawer-button lg:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </label> -->
+                        </div>
+                        <div class="flex-1">
+                            <a class="btn btn-ghost text-xl"><img src="images/logo.png" class="logo"></img></a>
+                        </div>
+                        <!-- <div class="flex-none">
+                            <button class="btn btn-square btn-ghost">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                                </svg>
+                            </button>
+                            <select data-choose-theme class="select select-bordered w-full max-w-xs">
+                                <option value="dark">dark</option>
+                                <option value="light">light</option>
+                                <option value="dark">dark</option>
+                                <option value="light">light</option>
+                                <option value="cupcake">cupcake</option>
+                                <option value="bumblebee">bumblebee</option>
+                                <option value="emerald">emerald</option>
+                                <option value="corporate">corporate</option>
+                                <option value="synthwave">synthwave</option>
+                                <option value="retro">retro</option>
+                                <option value="cyberpunk">cyberpunk</option>
+                                <option value="valentine">valentine</option>
+                                <option value="halloween">halloween</option>
+                                <option value="garden">garden</option>
+                                <option value="forest">forest</option>
+                                <option value="aqua">aqua</option>
+                                <option value="lofi">lofi</option>
+                                <option value="pastel">pastel</option>
+                                <option value="fantasy">fantasy</option>
+                                <option value="wireframe">wireframe</option>
+                                <option value="black">black</option>
+                                <option value="luxury">luxury</option>
+                                <option value="dracula">dracula</option>
+                                <option value="cmyk">cmyk</option>
+                                <option value="autumn">autumn</option>
+                                <option value="business">business</option>
+                                <option value="acid">acid</option>
+                                <option value="lemonade">lemonade</option>
+                                <option value="night">night</option>
+                                <option value="coffee">coffee</option>
+                                <option value="winter">winter</option>
+                                <option value="dim">dim</option>
+                                <option value="nord">nord</option>
+                                <option value="sunset">sunset</option>
+                            </select>
+                        </div> -->
+                    </div>
+                    <main class="prose p-4">                
+                        <!-- <div class="website">
+                            <img src="images/logo.png" class="logo"></img>
+                        </div> -->
+                        <div class="hero main">
+                            <div class="hero-overlay bg-opacity-60"></div>
+                            <div class="hero-content text-center text-neutral-content">
+                                <div class="introduction">
+                                    <h1 class="mb-5 text-5xl font-bold">Scheduling made simple!</h1>
+                                    <p>In today’s fast-paced world, managing time efficiently has never been more crucial. At 1on1, we understand the value of your time. That's why we've created a revolutionary platform that simplifies the process of scheduling meetings and managing calendars. Whether you're a professional juggling multiple appointments, a business coordinating with clients, or just someone looking to organize your personal schedule more effectively, 1on1 is here to transform the way you plan your time.</p>
+                                    <br class="hidden lg:block">
+                                    <p class="hidden lg:block">With our intuitive calendar creation tool, seamless sharing capabilities, and straightforward scheduling system, you’re just a few clicks away from experiencing hassle-free time management. Say goodbye to the endless back-and-forth emails and the confusion of time zone conversions. Welcome to a world where setting up a meeting is as easy as sharing a link.</p>
+                                    <br class="hidden lg:block">
+                                    <p class="hidden lg:block">Dive into 1on1 – Your time, your schedule, simplified.</p>
+                                    <br>
+                                    <button class="btn btn-primary get-started" onclick="RegisterModal.showModal()">Get Started</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <!-- Review 1 -->
+                                    <div class="review bg-gray-800 text-white p-4 rounded-lg shadow-md">
+                                        <div class="flex items-center space-x-4">
+                                            <img class="w-12 h-12 rounded-full" src="images/profile1.jpg" alt="Profile Picture of Emma">
+                                            <div>
+                                                <h3 class="text-lg font-semibold mb-1">Emma Johnson</h3>
+                                                <div class="flex">
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="mt-3 text-sm">I've been using this site for my business meetings, and it's incredibly efficient and user-friendly. A must-have tool for professionals!</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!-- Review 2 -->
+                                    <div class="review bg-gray-800 text-white p-4 rounded-lg shadow-md">
+                                        <div class="flex items-center space-x-4">
+                                            <img class="w-12 h-12 rounded-full" src="images/profile2.jpg" alt="Profile Picture of John">
+                                            <div>
+                                                <h3 class="text-lg font-semibold mb-1">John Doe</h3>
+                                                <div class="flex">
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="mt-3 text-sm">This is the best scheduling tool I've encountered. It's streamlined my appointments and made coordination a breeze!</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!-- Review 3 -->
+                                    <div class="review bg-gray-800 text-white p-4 rounded-lg shadow-md">
+                                        <div class="flex items-center space-x-4">
+                                            <img class="w-12 h-12 rounded-full" src="images/profile3.jpg" alt="Profile Picture of Sarah">
+                                            <div>
+                                                <h3 class="text-lg font-semibold mb-1">Sarah Lee</h3>
+                                                <div class="flex">
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.919 1.6-.919 1.902 0l1.286 3.942h4.15c1.002 0 1.418 1.214.707 1.813l-3.365 2.839 1.288 3.95c.301.92-.755 1.684-1.566 1.19l-3.383-2.061-3.383 2.061c-.811.494-1.867-.27-1.566-1.19l1.288-3.95-3.365-2.839c-.711-.599-.295-1.813.707-1.813h4.15l1.286-3.942z"></svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="mt-3 text-sm">Incredible! This website has simplified my life. The interface is intuitive and makes scheduling hassle-free.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+
+                        <dialog id="loginModal" class="modal">
+                            <div class="modal-box">
+                                <form method="dialog">
+                                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                </form>
+                
+                                <h3 class="font-bold text-lg">Login</h3>
+                                <form form action="home.html" method="post">
+                                    <label class="form-control w-full max-w-xs">
+                
+                                        <div class="label">
+                                            <span class="label-text">Username</span>
+                                        </div>
+                                        <input type="text" placeholder="Enter username" class="input input-bordered w-full max-w-xs" required>
+                
+                
+                                        <div class="label">
+                                            <span class="label-text">Password</span>
+                                        </div>
+                                        <input type="password" placeholder="Enter password" class="input input-bordered w-full max-w-xs" required>
+                
+                
+                                        <div class="label"></div>
+                                        <input type="submit" value="Submit" class="w-full max-w-xs btn btn-primary text-white">
+                                    </label>
+                                </form>
+                
+                                <div class="label"></div>
+                                <form method="dialog">
+                                    <button class="btn btn-sm btn-ghost" onclick="RegisterModal.showModal()">Don't have an account?</button>
+                                </form>
+                
+                            </div>
+                        </dialog>
+                
+                        <dialog id="RegisterModal" class="modal">
+                            <div class="modal-box">
+                                <form method="dialog">
+                                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                </form>
+                
+                                <h3 class="font-bold text-lg">Register</h3>
+                                <form form action="confirmation.html?title=Account%20Created" method="post">
+                                    <label class="form-control w-full max-w-xs">
+                
+                                        <div class="label">
+                                            <span class="label-text">Email</span>
+                                        </div>
+                                        <input type="email" placeholder="Enter a valid email" class="input input-bordered w-full max-w-xs" required>
+                
+                                        <div class="label">
+                                            <span class="label-text">Username</span>
+                                        </div>
+                                        <input type="text" placeholder="Enter username" class="input input-bordered w-full max-w-xs" required>
+                
+                
+                                        <div class="label">
+                                            <span class="label-text">Password</span>
+                                        </div>
+                                        <input type="password" placeholder="Enter password" class="input input-bordered w-full max-w-xs" id="signup-password" onChange="onChangePassword()" required>
+                
+                
+                                        <div class="label">
+                                            <span class="label-text">Repeat Password</span>
+                                        </div>
+                                        <input type="password" placeholder="Enter password" class="input input-bordered w-full max-w-xs" id="signup-confirm-password" onChange="onChangeRepeatPassword()" required>
+                
+                
+                                        <div class="label"></div>
+                                        <input type="submit" value="Submit" class="w-full max-w-xs btn btn-primary text-white">
+                                    </label>
+                                </form>
+                
+                                <div class="label"></div>
+                                <form method="dialog">
+                                    <button class="btn btn-sm btn-ghost" onclick="loginModal.showModal()">Already have an account?</button>
+                                </form>
+                            </div>
+                        </dialog>
+                    </main>
+                    <footer class="footer mt-auto footer-center p-4 bg-base-300 text-base-content self-end">
+                        <aside>
+                            <p>Copyright 2024 - All right reserved by 1on1</p>
+                        </aside>
+                    </footer>
+                </div>
+            </div>
+            <!-- <div class="drawer-side z-40">
+                <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+                <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                    <li><a href="test">test</a></li>
+                    <li><a href="test2">test2</a></li>
+                    <li><a href="/link1">Custom Link 1</a></li>
+                    <li><a href="/link2">Custom Link 2</a></li>
+                    <li><a href="/link3">Custom Link 3</a></li>
+                </ul>
+            </div> -->
+        </div>
+    </body>
+</html>
