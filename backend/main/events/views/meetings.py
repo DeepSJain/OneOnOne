@@ -100,7 +100,10 @@ class GenerateMeetings(viewsets.ViewSet):
 
         contact_events = ContactEvent.objects.filter(event=event)
 
-        meetings = greedy_meetings(event, contact_events)
+        # meetings = greedy_meetings(event, contact_events)
+        meeting_options = [greedy_meetings(event, contact_events) for _ in range(10)]
+        meeting_options = sorted(meeting_options, key=lambda x: len(x), reverse=True)
+        meetings = meeting_options[0]
 
         return Response({'status': 'success', 'meetings': meetings})
 

@@ -9,21 +9,30 @@ import interactionPlugin from "@fullcalendar/interaction"
 import { showAlert } from '../../components/alert_box/alert_box';
 
 import TitleInstructions from '../../components/title_instructions/title_instructions';
-import { NavigationButtons, back, get_param } from '../../components/navigation_buttons/navigation_buttons';
+import { get_param } from '../../components/navigation_buttons/navigation_buttons';
 import BaseApp from '../../components/base_app/base_app';
 
-let token = localStorage.getItem("token");
+let id = get_param("id");
+let event_id = get_param("event_id");
+let authorization = get_param("authorization");
+
+// if (!id || !event_id || !authorization) {
+//     showAlert("Invalid URL", "error");
+//     window.location.href = "/";
+// }
 
 class SetAvailability extends Component {
     constructor(props) {
         super(props);
 
-        this.event_id = props.event_id;
+        this.event_id = 1;
 
         this.calendar = createRef();
 
         this.state = {
-            timeslots: [],
+            eventContact: undefined,
+            ownerTimeslots: undefined,
+            timeslots: undefined,
         };
 
         this.getCalendarApi = this.getCalendarApi.bind(this);
@@ -51,10 +60,10 @@ class SetAvailability extends Component {
 
     addEvent(start, end, priority) {
         return new Promise((resolve, reject) => {
-            fetch(config.API_URL + `/api/events/${this.event_id}/availability/`, {
+            fetch(config.API_URL + `/api/event_contacts/${id}/availability/`, {
                 method: "POST",
                 headers: {
-                    "Authorization": `Bearer ${token}`,
+                    "Authorization": `Basic ${btoa(id + ":" + authorization)}`,
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
@@ -83,10 +92,10 @@ class SetAvailability extends Component {
 
     deleteEvent(event) {
         return new Promise((resolve, reject) => {
-            fetch(config.API_URL + `/api/events/${this.event_id}/availability/${event.id}/`, {
+            fetch(config.API_URL + `/api/event_contacts/${id}/availability/${event.id}/`, {
                 method: "DELETE",
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Basic ${btoa(id + ":" + authorization)}`
                 }
             }).then(response => {
                 if (response.status === 204) {
@@ -109,27 +118,29 @@ class SetAvailability extends Component {
             let {deleteEvent, addEvent} = this;
     
             this.getCalendarApi().getEvents().forEach(function(event) {
-                if (start <= event.start && event.end <= end) {
-                    promises.push(deleteEvent(event));
-                } else if (event.start < start && end < event.end) {
-                    // Instead of pushing to promises inside then(), handle it separately.
-                    const handleComplexEventPromise = deleteEvent(event).then(() => {
-                        return Promise.all([
-                            addEvent(event.start, start, config.colors.color_to_priority[event.backgroundColor]),
-                            addEvent(end, event.end, config.colors.color_to_priority[event.backgroundColor])
-                        ]);
-                    });
-                    eventHandlingPromises.push(handleComplexEventPromise);
-                } else if (event.start < end && end < event.end) {
-                    const handleEndOverlapPromise = deleteEvent(event).then(() => {
-                        return addEvent(end, event.end, config.colors.color_to_priority[event.backgroundColor]);
-                    });
-                    eventHandlingPromises.push(handleEndOverlapPromise);
-                } else if (event.start < start && start < event.end) {
-                    const handleStartOverlapPromise = deleteEvent(event).then(() => {
-                        return addEvent(event.start, start, config.colors.color_to_priority[event.backgroundColor]);
-                    });
-                    eventHandlingPromises.push(handleStartOverlapPromise);
+                if (!event.id.startsWith("owner-") && event.display === 'background') {
+                    if (start <= event.start && event.end <= end) {
+                        promises.push(deleteEvent(event));
+                    } else if (event.start < start && end < event.end) {
+                        // Instead of pushing to promises inside then(), handle it separately.
+                        const handleComplexEventPromise = deleteEvent(event).then(() => {
+                            return Promise.all([
+                                addEvent(event.start, start, config.colors.color_to_priority[event.backgroundColor]),
+                                addEvent(end, event.end, config.colors.color_to_priority[event.backgroundColor])
+                            ]);
+                        });
+                        eventHandlingPromises.push(handleComplexEventPromise);
+                    } else if (event.start < end && end < event.end) {
+                        const handleEndOverlapPromise = deleteEvent(event).then(() => {
+                            return addEvent(end, event.end, config.colors.color_to_priority[event.backgroundColor]);
+                        });
+                        eventHandlingPromises.push(handleEndOverlapPromise);
+                    } else if (event.start < start && start < event.end) {
+                        const handleStartOverlapPromise = deleteEvent(event).then(() => {
+                            return addEvent(event.start, start, config.colors.color_to_priority[event.backgroundColor]);
+                        });
+                        eventHandlingPromises.push(handleStartOverlapPromise);
+                    }
                 }
             });
     
@@ -186,11 +197,25 @@ class SetAvailability extends Component {
 
 
     componentDidMount() {
+        fetch(config.API_URL + `/api/event_contacts/${id}/`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Basic ${btoa(id + ":" + authorization)}`
+            }
+        }).then(response => response.json()).then(data => {
+            if (data.id === undefined) {
+                showAlert("Error fetching event contact", "error");
+                window.location.href = "/";
+            }
+
+            this.setState({eventContact: data});
+        });
+
         const fetchAll = (page=1, all=[]) => {
-            fetch(config.API_URL + `/api/events/${this.event_id}/availability/?page=${page}`, {
+            fetch(config.API_URL + `/api/event_contacts/${id}/availability/?page=${page}`, {
                 method: "GET",
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Basic ${btoa(id + ":" + authorization)}`
                 }
             }).then(response => response.json()).then(data => {
                 let timeslots = data.results;
@@ -209,8 +234,32 @@ class SetAvailability extends Component {
                 this.setState({timeslots: all});
             });
         }
+        const ownerFetchAll = (page=1, all=[]) => {
+            fetch(config.API_URL + `/api/events/${event_id}/availability/?page=${page}`, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Basic ${btoa(id + ":" + authorization)}`
+                }
+            }).then(response => response.json()).then(data => {
+                let timeslots = data.results;
+                if (timeslots === undefined) {
+                    showAlert("Error fetching timeslots", "error");
+                    window.location.href = "/";
+                }
+                
+                all = all.concat(timeslots);
+                
+                if (data.next) {
+                    ownerFetchAll(page+1, all);
+                    return;
+                }
+                
+                this.setState({ownerTimeslots: all});
+            });
+        }
 
         fetchAll();
+        ownerFetchAll();
     }
 
     componentDidUpdate() {
@@ -225,6 +274,16 @@ class SetAvailability extends Component {
     getCalendarEvents() {
         let calendar_events = [];
 
+        this.state.ownerTimeslots.forEach(timeslot => {
+            calendar_events.push({
+                id: "owner-" + timeslot.id,
+                start: timeslot.start_time,
+                end: timeslot.end_time,
+                display: 'background',
+                color: config.colors.priority_int_to_light_color[timeslot.priority]
+            });
+        });
+
         this.state.timeslots.forEach(timeslot => {
             calendar_events.push({
                 id: timeslot.id,
@@ -235,10 +294,27 @@ class SetAvailability extends Component {
             });
         });
 
+        if (this.state.eventContact.meeting_scheduled) {
+            calendar_events.push({
+                id: "meeting",
+                title: "Meeting",
+                start: this.state.eventContact.meeting_start_time,
+                end: this.state.eventContact.meeting_end_time,
+                color: config.colors.meeting_color,
+                durationEditable: false,
+                editable: false
+            });
+        
+        }
+
         return calendar_events;
     }
     
     render() {
+        if (this.state.timeslots === undefined || this.state.ownerTimeslots === undefined || this.state.eventContact === undefined) {
+            return;
+        }
+
         return (
             <div className="set-availability">
                 <FullCalendar
@@ -280,15 +356,15 @@ function Main() {
             <TitleInstructions title="Set Your Availability" instructions="Select a time slot and click one of the buttons below to set your availability." />
             <div className="divider"></div>
             <SetAvailability event_id={event_id} />
-            <div className="divider"></div>
-            {get_param("next") !== null ? <NavigationButtons back={{label: "Back", onClick: back}} next={{label: "Next", onClick: () => window.location.href = get_param("next")}} /> : <NavigationButtons back={{label: "Back", onClick: back}} />}
+            {/* <div className="divider"></div> */}
+            {/* {get_param("next") !== null ? <NavigationButtons back={{label: "Back", onClick: back}} next={{label: "Next", onClick: () => window.location.href = get_param("next")}} /> : <NavigationButtons back={{label: "Back", onClick: back}} />} */}
         </main>
     );
 }
 
 function App() {
     return (
-        <BaseApp main={<Main />} home_url="/events/" is_nav={true} />
+        <BaseApp main={<Main />} home_url="/" is_nav={false} />
     );
 }
 

@@ -100,19 +100,19 @@ class Event extends Component {
                 if (contact_availability[i].start_time < my_availability[j].end_time && contact_availability[i].end_time > my_availability[j].start_time) {
                     let start_time = contact_availability[i].start_time > my_availability[j].start_time ? contact_availability[i].start_time : my_availability[j].start_time;
                     let end_time = contact_availability[i].end_time < my_availability[j].end_time ? contact_availability[i].end_time : my_availability[j].end_time;
-                    let priority = contact_availability[i].priority > my_availability[j].priority ? contact_availability[i].priority : my_availability[j].priority;
+                    let priority = 1;  // let priority = contact_availability[i].priority > my_availability[j].priority ? contact_availability[i].priority : my_availability[j].priority;
                     availability_overlaps.push({id: event_contact_id, start_time, end_time, priority});
                 } else if (contact_availability[i].start_time < my_availability[j].start_time && contact_availability[i].end_time > my_availability[j].end_time) {
                     let {start_time, end_time} = my_availability[j];
-                    let priority = contact_availability[i].priority > my_availability[j].priority ? contact_availability[i].priority : my_availability[j].priority;
+                    let priority = 1;  // let priority = contact_availability[i].priority > my_availability[j].priority ? contact_availability[i].priority : my_availability[j].priority;
                     availability_overlaps.push({id: event_contact_id, start_time, end_time, priority});
                 } else if (contact_availability[i].start_time > my_availability[j].start_time && contact_availability[i].end_time < my_availability[j].end_time) {
                     let {start_time, end_time} = contact_availability[i];
-                    let priority = contact_availability[i].priority > my_availability[j].priority ? contact_availability[i].priority : my_availability[j].priority;
+                    let priority = 1;  // let priority = contact_availability[i].priority > my_availability[j].priority ? contact_availability[i].priority : my_availability[j].priority;
                     availability_overlaps.push({id: event_contact_id, start_time, end_time, priority});
                 } else if (contact_availability[i].start_time === my_availability[j].start_time && contact_availability[i].end_time === my_availability[j].end_time) {
                     let {start_time, end_time} = contact_availability[i];
-                    let priority = contact_availability[i].priority > my_availability[j].priority ? contact_availability[i].priority : my_availability[j].priority;
+                    let priority = 1;  // let priority = contact_availability[i].priority > my_availability[j].priority ? contact_availability[i].priority : my_availability[j].priority;
                     availability_overlaps.push({id: event_contact_id, start_time, end_time, priority});
                 }
             }
@@ -130,7 +130,7 @@ class Event extends Component {
                 start: overlap.start_time,
                 end: overlap.end_time,
                 display: 'background',
-                color: config.colors.priority_int_to_color[overlap.priority]
+                color: config.colors.priority_int_to_light_color[overlap.priority]
             });
         });
     }
@@ -411,7 +411,7 @@ class Event extends Component {
                     title: contact_event.contact.name,
                     start: contact_event.meeting_start_time,
                     end: contact_event.meeting_end_time,
-                    color: '#aa0000',
+                    color: config.colors.meeting_color,
                     editable: false
                 });
             }
