@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "users",
     "events",
-    "frontend",
+    # "frontend",
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,6 @@
 import config from '../../config';
 
-import React from 'react';
+import { Component } from 'react';
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 
@@ -11,7 +11,7 @@ import BaseApp from '../../components/base_app/base_app';
 
 let token = localStorage.getItem("token");
 
-class Events extends React.Component {
+class Events extends Component {
     constructor(props) {
         super(props);
         this.state = {

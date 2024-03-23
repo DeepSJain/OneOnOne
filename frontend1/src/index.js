@@ -12,7 +12,9 @@ import {default as Event} from './pages/event/event';
 import {default as SetAvailability} from './pages/set_availability/set_availability';
 import {default as InviteContacts} from './pages/invite_contacts/invite_contacts';
 import {default as ContactSetAvailibility} from './pages/contact_set_availability/contact_set_availability';
+import {default as Settings} from './pages/settings/settings';
 import {default as Logout} from './pages/logout/logout';
+import {default as NotFound} from './pages/not_found/not_found';
 
 // import reportWebVitals from './reportWebVitals';
 
@@ -32,9 +34,11 @@ root.render(
 
         <Route path="/set_availability/" element={<ContactSetAvailibility />} />
 
+        <Route path="/settings/" element={<Settings />} />
+
         <Route path="/logout/" element={<Logout />} />
 
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
