@@ -98,7 +98,7 @@ function Main() {
 
 function App() {
     return (
-        <BaseApp main={<Main />} home_url="/create_event/" is_nav={true} />
+        <BaseApp main={<Main />} home_url="/events/" is_nav={true} />
     );
 }
 

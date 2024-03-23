@@ -10,6 +10,11 @@ function goHome() {
     window.location.href = "/events/";
 }
 
+function get_param(key) {
+    let url = new URL(window.location.href);
+    return url.searchParams.get(key);
+}
+
 function NavigationButtons({back, next, home}) {
     return (
         <div id="navigation_buttons">
@@ -20,4 +25,4 @@ function NavigationButtons({back, next, home}) {
     );
 }
 
-export {NavigationButtons, back};
+export {NavigationButtons, back, get_param};
