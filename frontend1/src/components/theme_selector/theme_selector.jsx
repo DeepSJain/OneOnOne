@@ -17,6 +17,7 @@ class ThemeSelector extends Component {
     }
 
     componentDidMount() {
+        themeSelect();
 
         if (!token) {
             return;
