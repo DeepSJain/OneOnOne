@@ -69,38 +69,38 @@ class ThemeSelector extends Component {
         }
         return (
             <select data-choose-theme className="select select-bordered w-full max-w-xs" onChange={this.saveTheme}>
-                <option value="dark">dark</option>
-                <option value="light">light</option>
-                <option value="cupcake">cupcake</option>
-                <option value="bumblebee">bumblebee</option>
-                <option value="emerald">emerald</option>
-                <option value="corporate">corporate</option>
-                <option value="synthwave">synthwave</option>
-                <option value="retro">retro</option>
-                <option value="cyberpunk">cyberpunk</option>
-                <option value="valentine">valentine</option>
-                <option value="halloween">halloween</option>
-                <option value="garden">garden</option>
-                <option value="forest">forest</option>
-                <option value="aqua">aqua</option>
-                <option value="lofi">lofi</option>
-                <option value="pastel">pastel</option>
-                <option value="fantasy">fantasy</option>
-                <option value="wireframe">wireframe</option>
-                <option value="black">black</option>
-                <option value="luxury">luxury</option>
-                <option value="dracula">dracula</option>
-                <option value="cmyk">cmyk</option>
-                <option value="autumn">autumn</option>
-                <option value="business">business</option>
-                <option value="acid">acid</option>
-                <option value="lemonade">lemonade</option>
-                <option value="night">night</option>
-                <option value="coffee">coffee</option>
-                <option value="winter">winter</option>
-                <option value="dim">dim</option>
-                <option value="nord">nord</option>
-                <option value="sunset">sunset</option>
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="cupcake">Cupcake</option>
+                <option value="bumblebee">Bumblebee</option>
+                <option value="emerald">Emerald</option>
+                <option value="corporate">Corporate</option>
+                <option value="synthwave">Synthwave</option>
+                <option value="retro">Retro</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="valentine">Valentine</option>
+                <option value="halloween">Halloween</option>
+                <option value="garden">Garden</option>
+                <option value="forest">Forest</option>
+                <option value="aqua">Aqua</option>
+                <option value="lofi">Lofi</option>
+                <option value="pastel">Pastel</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="wireframe">Wireframe</option>
+                <option value="black">Black</option>
+                <option value="luxury">Luxury</option>
+                <option value="dracula">Dracula</option>
+                <option value="cmyk">Cmyk</option>
+                <option value="autumn">Autumn</option>
+                <option value="business">Business</option>
+                <option value="acid">Acid</option>
+                <option value="lemonade">Lemonade</option>
+                <option value="night">Night</option>
+                <option value="coffee">Coffee</option>
+                <option value="winter">Winter</option>
+                <option value="dim">Dim</option>
+                <option value="nord">Nord</option>
+                <option value="sunset">Sunset</option>
             </select>
         );
     }
