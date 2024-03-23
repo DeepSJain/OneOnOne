@@ -13,45 +13,6 @@ class Settings extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            textSize: "base"
-        };
-
-        this.handleTextSizeChange = this.handleTextSizeChange.bind(this);
-    }
-
-    handleTextSizeChange(event) {
-        this.setState({textSize: event.target.value});
-        console.log(event.target.value);
-    }
-
-    render() {
-        return (
-            <div className="flex flex-col items-center">
-                <div className="mb-4">
-                <label htmlFor="text-size-selector" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select text size:</label>
-                <select id="text-size-selector" value={this.state.textSize} onChange={this.handleTextSizeChange} className="text-size-selector bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="xs">Extra Small</option>
-                    <option value="sm">Small</option>
-                    <option value="base">Base</option>
-                    <option value="lg">Large</option>
-                    <option value="xl">Extra Large</option>
-                </select>
-                </div>
-                <div className={`text-${this.state.textSize}`}>
-                This text changes size based on the selected option.
-                </div>
-            </div>
-        );
-    }
-  };
-  
-  
-
-class aa extends Component {
-    constructor(props) {
-        super(props);
-
         this.changePassword = this.changePassword.bind(this);
         this.changeUsername = this.changeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
