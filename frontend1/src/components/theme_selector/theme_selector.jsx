@@ -1,14 +1,73 @@
+import config from '../../config';
+
 import { themeSelect } from './theme-change';
 import { Component } from 'react';
 
+import { showAlert } from '../alert_box/alert_box';
+
+let token = localStorage.getItem("token");
+
 class ThemeSelector extends Component {
+    constructor(props) {
+        super(props);
+
+        this.selector = props.selector;
+
+        this.saveTheme = this.saveTheme.bind(this);
+    }
+
     componentDidMount() {
-        themeSelect();
+
+        if (!token) {
+            return;
+        }
+
+        fetch(config.API_URL + "/api/users/get_theme/", {
+            "method": "GET",
+            "headers": {
+                "Authorization": `Bearer ${token}`
+            }
+        }).then(response => response.json()).then(data => {
+            if (data.status !== "success") {
+                showAlert("Error fetching theme", "error");
+                return;
+            }
+
+            document.querySelector("[data-choose-theme]").value = data.theme;
+            themeSelect();
+        });
+    }
+
+    saveTheme() {
+        let theme = document.querySelector("[data-choose-theme]").value;
+
+        fetch(config.API_URL + "/api/users/change_theme/", {
+            "method": "POST",
+            "headers": {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "theme": theme
+            })
+        }).then(response => response.json()).then(data => {
+            if (data.status !== "success") {
+                showAlert("Error saving theme", "error");
+                return;
+            }
+
+            showAlert("Theme saved", "success");
+        });
     }
 
     render() {
+        if (!this.selector) {
+            return (
+                <input type="hidden" data-choose-theme value="dark"></input>
+            );
+        }
         return (
-            <select data-choose-theme className="select select-bordered w-full max-w-xs">
+            <select data-choose-theme className="select select-bordered w-full max-w-xs" onChange={this.saveTheme}>
                 <option value="dark">dark</option>
                 <option value="light">light</option>
                 <option value="cupcake">cupcake</option>

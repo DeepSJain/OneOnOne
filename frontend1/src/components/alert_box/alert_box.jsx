@@ -1,9 +1,13 @@
 import { Component } from 'react';
 
 class AlertBox extends Component {
+    componentDidMount() {
+        document.getElementById("alert_box").style.display = "none";
+    }
+
     render() {
         return (
-            <div id="alert_box" className={`alert alert-dismissible fixed right-4 top-4 z-50 w-96 z-50`} role="alert" hidden>
+            <div id="alert_box" className={`alert alert-dismissible fixed right-4 top-4 z-50 w-96 z-50`} role="alert">
                 <div className="flex-1">
                     <label className="label"></label>
                 </div>
@@ -19,11 +23,9 @@ function showAlert(message, type, timeout=5000) {
         document.getElementById("alert_box").innerText = message;
         
         document.getElementById("alert_box").style.display = "block";
-        document.getElementById("alert_box").hidden = false;
         
         setTimeout(() => {
             document.getElementById("alert_box").style.display = "none";
-            document.getElementById("alert_box").hidden = true;
         }, timeout);
     } catch (e) {
         console.log(e);

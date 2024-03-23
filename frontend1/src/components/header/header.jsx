@@ -1,7 +1,7 @@
 import logo from "../../assets/images/logo.png";
-import ThemeSelector from "./theme_selector/theme_selector";
+import ThemeSelector from "../theme_selector/theme_selector";
 
-function Header({home_url="/events/", is_nav=true}) {
+function Header({home_url="/events/", is_nav=true, is_theme=true}) {
     return (
         <header className="navbar bg-base-100 text-base-content sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] shadow-sm">
             <div className="flex-none">
@@ -16,9 +16,9 @@ function Header({home_url="/events/", is_nav=true}) {
                     <img src={logo} className="logo" alt="logo" />
                 </a>
             </div>
-            <div className="flex-none">
-                <ThemeSelector />
-            </div>
+            {is_theme ? <div className="flex-none">
+                <ThemeSelector selector={false} />
+            </div> : ""}
         </header>
     );
 }

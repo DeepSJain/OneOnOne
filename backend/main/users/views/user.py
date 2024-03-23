@@ -35,8 +35,11 @@ class UserViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         username = serializer.validated_data.get('username', None)
+        email = serializer.validated_data.get('email', None)
         if not username or CustomUser.objects.filter(username=username).exists():
-            raise PermissionDenied("Username already exists")
+            raise PermissionDenied("Username is taken")
+        if not email or CustomUser.objects.filter(email=email).exists():
+            raise PermissionDenied("Email is associated with another account")
         serializer.save()
         serializer.instance.password = None
         
@@ -91,7 +94,7 @@ class UserViewSet(viewsets.ModelViewSet):
             raise PermissionDenied("New username is the same as the old one")
         
         if CustomUser.objects.filter(username=new_username).exists():
-            raise PermissionDenied("Username already exists")
+            raise PermissionDenied("Username is already taken")
         
         user.username = new_username
         user.save()
@@ -111,7 +114,7 @@ class UserViewSet(viewsets.ModelViewSet):
             raise PermissionDenied("New email is the same as the old one")
         
         if CustomUser.objects.filter(email=new_email).exists():
-            raise PermissionDenied("Email already exists")
+            raise PermissionDenied("Email is associated with another account")
         
         user.email = new_email
         user.save()
@@ -133,3 +136,22 @@ class UserViewSet(viewsets.ModelViewSet):
         user.delete()
         user.password = None
         return Response({'status': 'success'})
+
+    @action(detail=False, methods=['post'], url_path='change_theme')
+    def change_theme(self, request, *args, **kwargs):
+        user = request.user
+        
+        theme = request.data.get('theme', None)
+        
+        if not theme:
+            raise PermissionDenied("Missing theme")
+        
+        user.theme = theme
+        user.save()
+        user.password = None
+        return Response({'status': 'success'})
+
+    @action(detail=False, methods=['get'], url_path='get_theme')
+    def get_theme(self, request, *args, **kwargs):
+        user = request.user
+        return Response({'theme': user.theme, 'status': 'success'})
