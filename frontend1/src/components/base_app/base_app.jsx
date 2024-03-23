@@ -8,7 +8,7 @@ import { AlertBox } from '../../components/alert_box/alert_box';
 function BaseApp({main, home_url, is_nav=true}) {
     return (
         <div className="drawer lg:drawer-open">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle"></input>
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 <div className="min-h-screen flex flex-col">
                     <Header home_url={home_url} is_nav={is_nav} />

@@ -89,6 +89,12 @@ class TimeSlotUserViewSet(AvailibilityModelViewSet):
             
             if serializer.validated_data.get('end_time', None) > timeslot.start_time and serializer.validated_data.get('end_time', None) <= timeslot.end_time:
                 raise PermissionDenied("End time overlaps with existing slot")
+            
+            if serializer.validated_data.get('start_time', None) <= timeslot.start_time and serializer.validated_data.get('end_time', None) >= timeslot.end_time:
+                raise PermissionDenied("Slot overlaps with existing slot")
+            
+            if serializer.validated_data.get('start_time', None) >= timeslot.start_time and serializer.validated_data.get('end_time', None) <= timeslot.end_time:
+                raise PermissionDenied("Slot overlaps with existing slot")
         
         # Check multiple of 30 minutes for start and end time
         if serializer.validated_data.get('start_time', None).minute % 30 != 0 or serializer.validated_data.get('start_time', None).second != 0:

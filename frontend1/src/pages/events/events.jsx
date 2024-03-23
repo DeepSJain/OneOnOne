@@ -45,7 +45,7 @@ class Events extends React.Component {
                 start: timeslot.start_time,
                 end: timeslot.end_time,
                 display: 'background',
-                color: config.priority_int_to_color[timeslot.priority]
+                color: config.colors.priority_int_to_color[timeslot.priority]
             });
         });
 
@@ -96,8 +96,8 @@ class Events extends React.Component {
                             <h3 className="card-title event-center mt-2">{event.name}</h3>
                             {/* <div id={`calendar-${event.id}`} className="home-calendar m-2"></div> */}
                             <FullCalendar 
-                                id={`calendar-${event.id}`}
-                                className="home-calendar m-2"
+                                // id={`calendar-${event.id}`}
+                                // className="home-calendar m-2"
                                 plugins={[ timeGridPlugin ]}
                                 initialView="timeGridWeek"
                                 headerToolbar={{

@@ -15,6 +15,11 @@ class Nav extends React.Component {
     }
 
     componentDidMount() {
+        if (!token) {
+            window.location.href = "/";
+            return;
+        }
+
         const fetchAll = (page=1, all=[]) => {
             fetch(config.API_URL + "/api/events/?page=" + page, {
                 method: "GET",

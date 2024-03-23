@@ -67,7 +67,7 @@ function addEvent(start, end, priority) {
                     start: start,
                     end: end,
                     display: 'background',
-                    color: colors[priority],
+                    color: priority_int_to_color[data.priority]
                 });
                 resolve(data);
             } else {
