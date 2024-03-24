@@ -114,7 +114,7 @@ You can do so by visiting the following link: {settings.FRONTEND_URL}/set_availa
         contact = contact_event.contact
         availability = Availability.objects.get(id=contact_event.availability.id)
         time_slots = TimeSlot.objects.filter(availability=availability)
-        time_slots = [{'start_time': time_slot.start_time, 'end_time': time_slot.end_time, 'priority': time_slot.priority} for time_slot in time_slots]
+        time_slots = [{'id':time_slot.id, 'start_time': time_slot.start_time, 'end_time': time_slot.end_time, 'priority': time_slot.priority} for time_slot in time_slots]
         return {
             'id': contact_event.id,
             'reminded': contact_event.reminded,

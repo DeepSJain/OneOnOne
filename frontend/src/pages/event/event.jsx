@@ -166,7 +166,6 @@ class Event extends Component {
             }
         }
 
-
         this.setState({proposed_meeting_times: proposed_meeting_times});
     }
 
