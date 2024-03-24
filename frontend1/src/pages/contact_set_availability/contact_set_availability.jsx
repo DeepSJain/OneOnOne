@@ -266,7 +266,7 @@ class SetAvailability extends Component {
         setTimeout(() => {
             this.unselect();
             this.getCalendarApi().render();
-        }, 200);
+        }, 500);
 
         // this.getCalendarApi().el.classList.add("main-calendar");
     }

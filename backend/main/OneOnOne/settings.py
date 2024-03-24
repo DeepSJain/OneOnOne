@@ -155,11 +155,19 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7)
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'no-reply@oneonone.tld'
+#-------------------------
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'oneonone.notification@gmail.com'
+# EMAIL_HOST_PASSWORD = 'adaj fwld kgzk dbbd'
+# EMAIL_USE_TLS = True
+
 
 CORS_ALLOW_ALL_ORIGINS = True

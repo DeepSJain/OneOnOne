@@ -79,6 +79,7 @@ class ContactEventViewSet(viewsets.ModelViewSet):
             send_mail("Meeting Invite", f"""You have been invited to a meeting. Please add your availability.
 You can do so by visiting the following link: http://localhost:8000/set_availability/?id={contact_event.id}&event_id={contact_event.event.id}&authorization={contact_event.authorization}""", None, [contact_event.contact.email])
         except Exception as e:
+            print(e)
             availability.delete()
             contact_event.delete()
             raise PermissionDenied("Failed to send invitation email")
