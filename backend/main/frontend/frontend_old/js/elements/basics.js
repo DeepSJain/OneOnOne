@@ -55,7 +55,7 @@ function Header({home_url="/events/"}) {
                 <a href={home_url} className="btn btn-ghost text-xl"><img src="/static/images/logo.png" className="logo"></img></a>
             </div>
             <div className="flex-none">
-                <ThemeSelector />
+                <ThemeSelector selector={false} />
             </div>
         </header>
     );

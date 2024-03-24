@@ -364,7 +364,7 @@ function Main() {
 
 function App() {
     return (
-        <BaseApp main={<Main />} home_url="/" is_nav={false} />
+        <BaseApp main={<Main />} home_url="/" is_nav={false} is_theme={false} />
     );
 }
 

@@ -17,11 +17,11 @@ class ThemeSelector extends Component {
     }
 
     componentDidMount() {
-        themeSelect();
-
-        if (!token || !this.selector) {
+        if (!token) {
             return;
         }
+
+        themeSelect();
 
         fetch(config.API_URL + "/api/users/get_theme/", {
             "method": "GET",
@@ -62,11 +62,12 @@ class ThemeSelector extends Component {
     }
 
     render() {
-        if (!this.selector) {
+        if (!token || !this.selector) {
             return (
                 <input type="hidden" data-choose-theme value="dark"></input>
             );
         }
+
         return (
             <select data-choose-theme className="select select-bordered w-full max-w-xs" onChange={this.saveTheme}>
                 <option value="dark">Dark</option>
