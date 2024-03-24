@@ -35,7 +35,7 @@ router.register(r'events/(?P<event_id>\d+)', GenerateMeetings, basename='generat
 router.register(r'event_contacts', ContactEventViewSet, basename='contact_event')
 router.register(r'event_contacts/(?P<contact_event_id>\d+)/availability', TimeSlotContactViewSet, basename='contact_availability')
 router.register(r'event_contacts/(?P<contact_event_id>\d+)', SendReminder, basename='send_reminder')
-router.register(r'event_contacts/(?P<contact_event_id>\d+)', SetMeeting, basename='send_reminder')
+router.register(r'event_contacts/(?P<contact_event_id>\d+)', SetMeeting, basename='set_meeting')
 
 urlpatterns = [
     # path("admin/", admin.site.urls, name="admin"),
