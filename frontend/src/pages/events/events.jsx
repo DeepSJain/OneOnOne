@@ -111,6 +111,8 @@ class Events extends Component {
                                 longPressDelay={250}
                                 unselectAuto={false}
                                 scrollTime='08:00:00'
+                                initialDate={new Date()}
+                                
                                 events={this.toCalendarEvents(event)}
                             />
                             <h6 className="event-center text-gray-500 mb-2">

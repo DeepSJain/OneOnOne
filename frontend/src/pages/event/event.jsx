@@ -487,6 +487,7 @@ class Event extends Component {
                     eventResizeStart={this.eventUpdateStart}
                     eventResizeStop={this.eventUpdateStop}
                     eventResize={this.eventUpdateAfter}
+                    initialDate={new Date()}
 
                     events={this.getCalendarEvents()}
                     ref={this.calendar}

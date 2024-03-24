@@ -259,6 +259,7 @@ class SetAvailability extends Component {
                     unselect={this.unselect}
                     unselectAuto={false}
                     scrollTime='08:00:00'
+                    initialDate={new Date()}
 
                     events={this.getCalendarEvents()}
                     ref={this.calendar}
