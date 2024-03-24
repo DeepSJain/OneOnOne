@@ -172,7 +172,7 @@ function RegisterModalElement() {
 function Index() {
     return (
         <div className="hero main">
-            <div className="hero-overlay bg-opacity-60"></div>
+            <div className="hero-overlay bg-opacity-80"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="introduction">
                     <h1 className="mb-5 text-5xl font-bold">Scheduling made simple!</h1>

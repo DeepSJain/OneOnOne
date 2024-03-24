@@ -132,6 +132,10 @@ function Main() {
             <TitleInstructions title="Home" instructions="Click on an event to view more details" />
             <div className="divider"></div>
             <Events />
+            <div className="divider"></div>
+            <div className="text-center mt-4">
+                <button className="btn btn-primary" onClick={() => window.location.href = "/create_event/"}>Create Event</button>
+            </div>
         </main>
     );
 }

@@ -136,12 +136,12 @@ html, body {
 #contacts-table #contact-list {
     display: block;
     max-height: 300px;
-    overflow: auto;
+    overflow-y: scroll;
 }
 #event-contacts-table #contact-list {
     display: block;
     max-height: 250px;
-    overflow: auto;
+    overflow-y: scroll;
 }
 #contacts-table tr, #event-contacts-table tr {
     display: table;
