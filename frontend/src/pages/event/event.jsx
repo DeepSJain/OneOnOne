@@ -371,9 +371,9 @@ class Event extends Component {
     }
 
     componentDidUpdate() {
-        setTimeout(() => {
-            this.getCalendarApi().render();
-        }, 100);
+        // setTimeout(() => {
+        // this.getCalendarApi().render();
+        // }, 100);
     }
 
     getCalendarEvents() {
