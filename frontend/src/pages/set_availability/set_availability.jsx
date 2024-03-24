@@ -214,10 +214,10 @@ class SetAvailability extends Component {
     }
 
     componentDidUpdate() {
-        setTimeout(() => {
-            this.unselect();
-            this.getCalendarApi().render();
-        }, 200);
+        // setTimeout(() => {
+        this.unselect();
+        // this.getCalendarApi().render();
+        // }, 200);
 
         // this.getCalendarApi().el.classList.add("main-calendar");
     }
@@ -265,9 +265,9 @@ class SetAvailability extends Component {
                     ref={this.calendar}
                 />
                 <div className="action_row">
-                    <button className="btn btn-primary set-availability" onClick={this.setLowPriority} disabled={!this.selected}>Set Low Priority</button>
-                    <button className="btn btn-primary set-availability" onClick={this.setHighPriority} disabled={!this.selected}>Set High Priority</button>
-                    <button className="btn btn-primary set-availability" onClick={this.clearAvailability} disabled={!this.selected}>Clear Availability</button>
+                    <button className="btn btn-primary set-availability" onClick={this.setLowPriority} >Set Low Priority</button>
+                    <button className="btn btn-primary set-availability" onClick={this.setHighPriority} >Set High Priority</button>
+                    <button className="btn btn-primary set-availability" onClick={this.clearAvailability} >Clear Availability</button>
                 </div>
             </div>
         );
