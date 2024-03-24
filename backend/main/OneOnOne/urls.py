@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 from users.views import UserViewSet, ContactViewSet
 from events.views import EventViewSet, ContactEventViewSet, TimeSlotUserViewSet, TimeSlotContactViewSet, GenerateMeetings, SendReminder, SetMeeting
-from frontend.views import fromend_urls
+# from frontend.views import fromend_urls
 
 
 router = DefaultRouter()
@@ -48,4 +48,4 @@ urlpatterns = [
     
     path('api/', include(router.urls)),
 
-] + fromend_urls + static("image_dir/", document_root="users/image_dir") + static("static/", document_root="../../../frontend")
+] + static("image_dir/", document_root="users/image_dir") + static("static/", document_root="../../../frontend")  # + fromend_urls
