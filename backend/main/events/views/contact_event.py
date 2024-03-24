@@ -78,7 +78,7 @@ class ContactEventViewSet(viewsets.ModelViewSet):
         contact_event = serializer.save(availability=availability)
         
         try:
-            send_mail("Meeting Invite", f"""You have been invited to a meeting. Please add your availability.
+            send_mail("Meeting Invite", f"""You have been invited to a meeting. Please add your availability by {event.deadline}.
 You can do so by visiting the following link: {settings.FRONTEND_URL}/set_availability/?id={contact_event.id}&event_id={contact_event.event.id}&authorization={contact_event.authorization}""", None, [contact_event.contact.email])
         except:
             availability.delete()

@@ -26,7 +26,7 @@ class SendReminder(viewsets.ViewSet):
             raise PermissionDenied("Already reminded")
         
         try:
-            send_mail("Reminder", f"""This is a reminder to add your availability for the upcoming event. 
+            send_mail("Reminder", f"""This is a reminder to add your availability for the upcoming event by {contact_event.event.deadline}.
 You can do so by visiting the following link: {settings.FRONTEND_URL}/set_availability/?id={contact_event.id}&event_id={contact_event.event.id}&authorization={contact_event.authorization}""", None, [contact_event.contact.email])
         except:
             raise PermissionDenied("Failed to send reminder email")
