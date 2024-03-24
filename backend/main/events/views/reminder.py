@@ -6,6 +6,8 @@ from events.models import ContactEvent
 from django.core.mail import send_mail
 from rest_framework.response import Response
 
+from django.conf import settings
+
 
 class SendReminder(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
@@ -25,7 +27,7 @@ class SendReminder(viewsets.ViewSet):
         
         try:
             send_mail("Reminder", f"""This is a reminder to add your availability for the upcoming event. 
-You can do so by visiting the following link: http://localhost:8000/set_availability/?id={contact_event.id}&event_id={contact_event.event.id}&authorization={contact_event.authorization}""", None, [contact_event.contact.email])
+You can do so by visiting the following link: {settings.FRONTEND_URL}/set_availability/?id={contact_event.id}&event_id={contact_event.event.id}&authorization={contact_event.authorization}""", None, [contact_event.contact.email])
         except:
             raise PermissionDenied("Failed to send reminder email")
         

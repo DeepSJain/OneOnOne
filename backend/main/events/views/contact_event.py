@@ -7,6 +7,8 @@ from events.models import Event, ContactEvent, Availability, TimeSlot
 from events.serializers import ContactEventSerializer
 from django.core.mail import send_mail
 
+from django.conf import settings
+
 import base64
 
 
@@ -77,9 +79,8 @@ class ContactEventViewSet(viewsets.ModelViewSet):
         
         try:
             send_mail("Meeting Invite", f"""You have been invited to a meeting. Please add your availability.
-You can do so by visiting the following link: http://localhost:8000/set_availability/?id={contact_event.id}&event_id={contact_event.event.id}&authorization={contact_event.authorization}""", None, [contact_event.contact.email])
-        except Exception as e:
-            print(e)
+You can do so by visiting the following link: {settings.FRONTEND_URL}/set_availability/?id={contact_event.id}&event_id={contact_event.event.id}&authorization={contact_event.authorization}""", None, [contact_event.contact.email])
+        except:
             availability.delete()
             contact_event.delete()
             raise PermissionDenied("Failed to send invitation email")
