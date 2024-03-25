@@ -10,7 +10,7 @@ class Nav extends React.Component {
         super(props);
         this.props = props;
         this.state = {
-            events: []
+            events: localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : []
         }
     }
 
@@ -42,6 +42,7 @@ class Nav extends React.Component {
                 }
                 
                 this.setState({events: all});
+                localStorage.setItem("events", JSON.stringify(all));
             });
         }
 
