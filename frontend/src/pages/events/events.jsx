@@ -15,7 +15,7 @@ class Events extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            events: []
+            events: localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : []
         }
     }
 
@@ -33,6 +33,7 @@ class Events extends Component {
             }
 
             this.setState({events: data.events});
+            localStorage.setItem("events", JSON.stringify(data.events));
         });
     }
 
@@ -66,7 +67,7 @@ class Events extends Component {
     render() {
         return (
             <div className="events">
-                {this.state.events.length === 0? <h3 className="text-center">No events found</h3> : null}
+                {this.state.events.length === 0 ? <h3 className="text-center">No events found</h3> : null}
                 {this.state.events.map(event => {
                     let any_meetings_scheduled = event.contacts.some(contact => contact.meeting_scheduled);
                     let all_meetings_scheduled = event.contacts.every(contact => contact.meeting_scheduled);
