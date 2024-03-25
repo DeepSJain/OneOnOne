@@ -23,6 +23,10 @@ class ThemeSelector extends Component {
 
         themeSelect();
 
+        if (this.selector) {
+            return;
+        }
+
         fetch(config.API_URL + "/api/users/get_theme/", {
             "method": "GET",
             "headers": {
@@ -34,13 +38,14 @@ class ThemeSelector extends Component {
                 return;
             }
 
-            document.querySelector("[data-choose-theme]").value = data.theme;
+            // document.querySelector("[data-choose-theme]").value = data.theme;
+            localStorage.setItem("theme", data.theme);
             themeSelect();
         });
     }
 
     saveTheme() {
-        let theme = document.querySelector("[data-choose-theme]").value;
+        let theme = document.getElementById("theme-change-selector").value;
 
         fetch(config.API_URL + "/api/users/change_theme/", {
             "method": "POST",
@@ -69,7 +74,7 @@ class ThemeSelector extends Component {
         }
 
         return (
-            <select data-choose-theme className="select select-bordered w-full max-w-xs" onChange={this.saveTheme}>
+            <select id="theme-change-selector" data-choose-theme className="select select-bordered w-full max-w-xs" onChange={this.saveTheme}>
                 <option value="dark">Dark</option>
                 <option value="light">Light</option>
                 <option value="cupcake">Cupcake</option>
