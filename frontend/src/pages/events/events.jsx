@@ -15,8 +15,9 @@ class Events extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            events: localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : []
+            events: []
         }
+        // localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : []
     }
 
     componentDidMount() {
@@ -33,7 +34,7 @@ class Events extends Component {
             }
 
             this.setState({events: data.events});
-            localStorage.setItem("events", JSON.stringify(data.events));
+            // localStorage.setItem("events", JSON.stringify(data.events));
         });
     }
 
