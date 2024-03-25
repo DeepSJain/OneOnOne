@@ -39,8 +39,10 @@ class ThemeSelector extends Component {
             }
 
             // document.querySelector("[data-choose-theme]").value = data.theme;
-            localStorage.setItem("theme", data.theme);
-            themeSelect();
+            if (localStorage.getItem("theme") !== data.theme) {
+                localStorage.setItem("theme", data.theme);
+                themeSelect();
+            }
         });
     }
 
