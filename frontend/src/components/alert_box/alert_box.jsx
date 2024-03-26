@@ -25,7 +25,9 @@ function showAlert(message, type, timeout=5000) {
         document.getElementById("alert_box").style.display = "block";
         
         setTimeout(() => {
-            document.getElementById("alert_box").style.display = "none";
+            if (document.getElementById("alert_box").innerText === message) {
+                document.getElementById("alert_box").style.display = "none";
+            }
         }, timeout);
     } catch (e) {
         console.log(e);
