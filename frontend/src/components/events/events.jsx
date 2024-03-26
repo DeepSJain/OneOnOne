@@ -28,8 +28,8 @@ class Events extends Component {
         }).then(response => response.json()).then(data => {
             if (data.status !== "success") {
                 showAlert("Error fetching events", "error");
-                // window.location.href = "/";
-                this.props.navigate("/");
+                window.location.href = "/";
+                // this.props.navigate("/");
                 return;
             }
 

@@ -19,8 +19,8 @@ class Nav extends React.Component {
 
     componentDidMount() {
         if (!token) {
-            // window.location.href = "/";
-            this.props.navigate("/");
+            window.location.href = "/";
+            // this.props.navigate("/");
             return;
         }
 
@@ -34,8 +34,8 @@ class Nav extends React.Component {
                 let events = data.results;
                 if (events === undefined) {
                     showAlert("Error fetching events", "error");
-                    // window.location.href = "/";
-                    this.props.navigate("/");
+                    window.location.href = "/";
+                    // this.props.navigate("/");
                     return;
                 }
                 

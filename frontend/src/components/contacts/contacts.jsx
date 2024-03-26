@@ -36,7 +36,7 @@ class Contacts extends Component {
                 if (contacts === undefined) {
                     showAlert("Error fetching contacts", "error");
                     // window.location.href = "/";
-                    this.props.navigate("/");
+                    this.props.navigate("/events/");
                 }
                 
                 all = all.concat(contacts);

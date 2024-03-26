@@ -40,7 +40,7 @@ class InviteContacts extends Component {
                 if (results === undefined) {
                     showAlert("Error fetching contacts", "error");
                     // window.location.href = "/";
-                    this.props.navigate("/");
+                    this.props.navigate("/events/");
                 }
                 
                 all = all.concat(results);
@@ -64,7 +64,7 @@ class InviteContacts extends Component {
                 if (results === undefined) {
                     showAlert("Error fetching  event contacts", "error");
                     // window.location.href = "/";
-                    this.props.navigate("/");
+                    this.props.navigate("/events/");
                 }
                 
                 all = all.concat(results);

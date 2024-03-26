@@ -6,11 +6,20 @@ import { showAlert } from '../../components/alert_box/alert_box';
 
 import ThemeSelector from '../../components/theme_selector/theme_selector';
 
+import withRouter from '../with_router/with_router';
+
 let token = localStorage.getItem("token");
 
 class Settings extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            user: {
+                username: "",
+                email: ""
+            }
+        }
 
         this.changePassword = this.changePassword.bind(this);
         this.changeUsername = this.changeUsername.bind(this);
@@ -19,6 +28,24 @@ class Settings extends Component {
         this.showDeleteModal = this.showDeleteModal.bind(this);
         this.changeEmail = this.changeEmail.bind(this);
         this.deleteAccount = this.deleteAccount.bind(this);
+    }
+
+    componentDidMount() {
+        fetch(config.API_URL + "/api/users/", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }).then(response => response.json()).then(data => {
+            if (data.results.length === 0) {
+                showAlert("Error fetching user", "error");
+                // window.location.href = "/";
+                this.props.navigate("/events/");
+                return;
+            }
+
+            this.setState({user: data.results[0]});
+        });
     }
     
 
@@ -205,7 +232,7 @@ class Settings extends Component {
                                     <div className="form-control w-full max-w-xs">
                                         <div className="label">
                                             <span className="label-text">New Username:</span>
-                                            <input type="text" placeholder="Enter New Username" className="input input-bordered w-full max-w-xs" name="new_email" required />
+                                            <input type="text" placeholder={this.state.user.username} className="input input-bordered w-full max-w-xs" name="new_email" required />
                                         </div>
                                         <div>
                                             <div className="label"></div>
@@ -223,7 +250,7 @@ class Settings extends Component {
                                     <div className="form-control w-full max-w-xs">
                                         <div className="label">
                                             <span className="label-text">New Email:</span>
-                                            <input type="text" placeholder="Enter New Email" className="input input-bordered w-full max-w-xs" name="new_username" required />
+                                            <input type="text" placeholder={this.state.user.email} className="input input-bordered w-full max-w-xs" name="new_username" required />
                                         </div>
                                         <div>
                                             <div className="label"></div>
@@ -308,4 +335,4 @@ class Settings extends Component {
     }
 }
 
-export default Settings;
+export default withRouter(Settings);

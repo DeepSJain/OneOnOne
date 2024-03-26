@@ -194,7 +194,7 @@ class SetAvailability extends Component {
                 if (timeslots === undefined) {
                     showAlert("Error fetching timeslots", "error");
                     // window.location.href = "/";
-                    this.props.navigate("/");
+                    this.props.navigate("/events/");
                 }
                 
                 all = all.concat(timeslots);
