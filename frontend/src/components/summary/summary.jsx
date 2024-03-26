@@ -72,7 +72,7 @@ class Summary extends Component {
     
     render() {
         return (
-            <div class="summary">
+            <div className="summary">
                 <FullCalendar
                     // id='calendar'
                     // className="main-calendar"
