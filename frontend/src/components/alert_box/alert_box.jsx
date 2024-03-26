@@ -3,6 +3,7 @@ import { Component } from 'react';
 class AlertBox extends Component {
     componentDidMount() {
         document.getElementById("alert_box").style.display = "none";
+        document.getElementById("alert_box").count = 0;
     }
 
     render() {
@@ -20,12 +21,16 @@ function showAlert(message, type, timeout=5000) {
     try {
         document.getElementById("alert_box").classList.remove("alert-success", "alert-error", "alert-warning", "alert-info");
         document.getElementById("alert_box").classList.add(`alert-${type}`);
+        
         document.getElementById("alert_box").innerText = message;
+
+        document.getElementById("alert_box").count += 1;
+        let {count} = document.getElementById("alert_box");
         
         document.getElementById("alert_box").style.display = "block";
         
         setTimeout(() => {
-            if (document.getElementById("alert_box").innerText === message) {
+            if (document.getElementById("alert_box").count === count) {
                 document.getElementById("alert_box").style.display = "none";
             }
         }, timeout);
