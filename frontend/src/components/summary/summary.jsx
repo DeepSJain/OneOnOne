@@ -49,7 +49,7 @@ class Summary extends Component {
             event.contacts.forEach(contact => {
                 if (contact.meeting_scheduled) {
                     calendar_events.push({
-                        title: contact.name,
+                        title: event.name + " - " + contact.name,
                         start: contact.meeting_start_time,
                         end: contact.meeting_end_time,
                         color: config.colors.meeting_color
