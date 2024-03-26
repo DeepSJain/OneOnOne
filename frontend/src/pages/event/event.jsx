@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 function Main() {
     let { event_id } = useParams();
+    let navigate = useNavigate();
+
     return (
         <main className="prose p-4">
             <TitleInstructions title="" instructions="Event details" />
@@ -17,7 +19,7 @@ function Main() {
             <Event event_id={event_id} />
             <div className="divider"></div>
             {/* {get_param("next") !== null ? <NavigationButtons back={{label: "Back", onClick: back}} next={{label: "Next", onClick: () => window.location.href = get_param("next")}} /> : <NavigationButtons back={{label: "Back", onClick: back}} />} */}
-            {get_param("next") !== null ? <NavigationButtons back={{label: "Back", onClick: back}} next={{label: "Next", onClick: () => useNavigate(get_param("next"))}} /> : <NavigationButtons back={{label: "Back", onClick: back}} />}
+            {get_param("next") !== null ? <NavigationButtons back={{label: "Back", onClick: back}} next={{label: "Next", onClick: () => navigate(get_param("next"))}} /> : <NavigationButtons back={{label: "Back", onClick: back}} />}
         </main>
     );
 }
