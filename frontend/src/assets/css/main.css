@@ -148,6 +148,10 @@ html, body {
     width: 100%;
     table-layout: fixed;
 }
+#contacts-table td, #event-contacts-table td {
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
 .contact-row {
     display: table;
     width: 100%;

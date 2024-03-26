@@ -20,7 +20,7 @@ let priority_int_to_light_color = {
 };
 
 const config = {
-    API_URL: 'https://oneonone-qe0i.onrender.com',
+    API_URL: 'http://localhost:8000',
     colors: {
         colors: colors,
         color_to_priority: color_to_priority,
