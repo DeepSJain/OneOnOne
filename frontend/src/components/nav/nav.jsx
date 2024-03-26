@@ -63,7 +63,7 @@ class Nav extends React.Component {
                     <li><Link className={window.location.pathname.startsWith("/contacts/") ? "bg-base-300" : ""} to="/contacts/">Contacts</Link></li>
                     <li><Link className={window.location.pathname.startsWith("/create_event/") ? "bg-base-300" : ""} to="/create_event/">Create Event</Link></li>
                     <div tabIndex="0" className="collapse collapse-open">
-                        {this.state.events.length === 0 ? "" : <div className="collapse-title">Your Events</div>}
+                        <div className="pt-2 pb-2 pl-4 h-auto">{this.state.events.length === 0 ? "" : "Your Events"}</div>
                         <div className="collapse-content"> 
                             {this.state.events.map(event => {
                                 return (
