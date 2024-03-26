@@ -28,7 +28,7 @@ html, body {
     font-size: 1.5em;
 }
 
-.set-availability .fc, .event-main .fc {
+.set-availability .fc, .event-main .fc, .summary .fc {
     min-width: calc(min(max(45vw, 500px), 100%));
     max-width: 900px;
     margin: auto auto;
