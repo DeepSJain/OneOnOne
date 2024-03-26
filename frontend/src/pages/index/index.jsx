@@ -28,6 +28,7 @@ class LoginModal extends React.Component {
         }).then(response => {
             if (response.status === 200) {
                 response.json().then(data => {
+                    localStorage.clear();
                     localStorage.setItem('token', data.access);
                     
                     showAlert("Login successful", "success");
@@ -100,6 +101,8 @@ class RegisterModal extends React.Component {
             })
         }).then(response => {
             if (response.status === 201) {
+                localStorage.clear();
+                
                 showAlert("Registration successful", "success");
                 showLoginModal();
             } else {

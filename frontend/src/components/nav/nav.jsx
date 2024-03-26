@@ -13,9 +13,8 @@ class Nav extends React.Component {
         super(props);
         this.props = props;
         this.state = {
-            events: []
+            events: localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : []
         }
-        // localStorage.getItem("events") ? JSON.parse(localStorage.getItem("events")) : []
     }
 
     componentDidMount() {
@@ -48,7 +47,7 @@ class Nav extends React.Component {
                 }
                 
                 this.setState({events: all});
-                // localStorage.setItem("events", JSON.stringify(all));
+                localStorage.setItem("events", JSON.stringify(all));
             });
         }
 
@@ -64,7 +63,7 @@ class Nav extends React.Component {
                     <li><Link className={window.location.pathname.startsWith("/contacts/") ? "bg-base-300" : ""} to="/contacts/">Contacts</Link></li>
                     <li><Link className={window.location.pathname.startsWith("/create_event/") ? "bg-base-300" : ""} to="/create_event/">Create Event</Link></li>
                     <div tabIndex="0" className="collapse collapse-open">
-                        <div className="pt-2 pb-2 pl-4 h-auto">Your Events</div>
+                        {this.state.events.length === 0 ? "" : <div className="collapse-title">Your Events</div>}
                         <div className="collapse-content"> 
                             {this.state.events.map(event => {
                                 return (
