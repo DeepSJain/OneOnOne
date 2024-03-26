@@ -34,7 +34,7 @@ class ThemeSelector extends Component {
             }
         }).then(response => response.json()).then(data => {
             if (data.status !== "success") {
-                showAlert("Error fetching theme", "error");
+                // showAlert("Error fetching theme", "error");
                 return;
             }
 
