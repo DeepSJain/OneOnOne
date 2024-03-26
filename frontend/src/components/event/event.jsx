@@ -48,6 +48,8 @@ class Event extends Component {
         this.deleteEvent = this.deleteEvent.bind(this);
 
         this.getCalendarEvents = this.getCalendarEvents.bind(this);
+
+        this.eventClick = this.eventClick.bind(this);
     }
 
     getCalendarApi() {
@@ -433,6 +435,14 @@ class Event extends Component {
 
         return calendar_events;
     }
+
+    eventClick(info) {
+        if (info.event.display === "background") {
+            return;
+        }
+
+        showAlert(info.event.title, "info");
+    }
     
     render() {
         return (
@@ -492,13 +502,14 @@ class Event extends Component {
                     allDaySlot={false}
                     selectable={false}
                     editable={true}
-                    scrollTime='08:00:00'
                     eventDragStart={this.eventUpdateStart}
                     eventDragStop={this.eventUpdateStop}
                     eventDrop={this.eventUpdateAfter}
                     eventResizeStart={this.eventUpdateStart}
                     eventResizeStop={this.eventUpdateStop}
                     eventResize={this.eventUpdateAfter}
+                    eventClick={this.eventClick}
+                    scrollTime='08:00:00'
                     initialDate={new Date()}
 
                     events={this.getCalendarEvents()}

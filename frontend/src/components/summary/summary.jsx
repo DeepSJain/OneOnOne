@@ -20,6 +20,7 @@ class Summary extends Component {
         }
 
         this.toCalendarEvents = this.toCalendarEvents.bind(this);
+        this.eventClick = this.eventClick.bind(this);
     }
 
 
@@ -60,6 +61,14 @@ class Summary extends Component {
 
         return calendar_events;
     }
+
+    eventClick(info) {
+        if (info.event.display === "background") {
+            return;
+        }
+        
+        showAlert(info.event.title, "info");
+    }
     
     render() {
         return (
@@ -78,6 +87,7 @@ class Summary extends Component {
                     selectable={false}
                     editable={false}
                     unselectAuto={false}
+                    eventClick={this.eventClick}
                     scrollTime='08:00:00'
                     initialDate={new Date()}
 
