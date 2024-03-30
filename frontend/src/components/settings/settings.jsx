@@ -137,6 +137,7 @@ class Settings extends Component {
 
             showAlert("Username changed", "success");
             event.target.reset();
+            event.target[0].placeholder = new_username;
         });
     }
 
@@ -170,6 +171,7 @@ class Settings extends Component {
 
             showAlert("Email changed", "success");
             event.target.reset();
+            event.target[0].placeholder = new_email;
         });
     }
 
