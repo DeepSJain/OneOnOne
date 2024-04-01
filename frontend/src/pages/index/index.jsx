@@ -1,5 +1,5 @@
 import config from '../../config';
-import React from 'react';
+import { Component } from 'react';
 
 import './index.css';
 
@@ -9,7 +9,7 @@ import { showAlert } from '../../components/alert_box/alert_box';
 import BaseApp from '../../components/base_app/base_app';
 
 
-class LoginModal extends React.Component {
+class LoginModal extends Component {
     submit(event) {
         event.preventDefault();
         
@@ -81,7 +81,7 @@ class LoginModal extends React.Component {
 }
 
 
-class RegisterModal extends React.Component {
+class RegisterModal extends Component {
     submit(event) {
         event.preventDefault();
     

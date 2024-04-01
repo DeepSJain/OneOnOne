@@ -7,7 +7,6 @@ import Summary from '../../components/summary/summary';
 import { useNavigate } from 'react-router-dom';
 
 function Main() {
-    let navigate = useNavigate();
     return (
         <main className="prose p-4">
             <TitleInstructions title="Summary" instructions="Here is a summary of all your meetings." />

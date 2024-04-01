@@ -1,5 +1,5 @@
 import config from '../../config';
-import React from "react";
+import { Component } from "react";
 
 import { showAlert } from "../alert_box/alert_box";
 
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 let token = localStorage.getItem("token");
 
-class Nav extends React.Component {
+class Nav extends Component {
     constructor(props) {
         super(props);
         this.props = props;
