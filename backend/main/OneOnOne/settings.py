@@ -163,7 +163,7 @@ EMAIL_PORT = 1025
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'oneonone.notification@gmail.com'
-# EMAIL_HOST_PASSWORD = 'adaj fwld kgzk dbbd'
+# EMAIL_HOST_PASSWORD = 'adaj fwld kgzk dbbd'  # This app password has been revoked
 
 
 CORS_ALLOW_ALL_ORIGINS = True
