@@ -9,7 +9,7 @@ Frontend: https://csc309-frontend.onrender.com/
 
 **Note**: The backend and frontend servers are deployed on Render. The backend server may take about a minute to start up.
 
-## Local Instructions
+## Local Installation
 1. Clone the repository.
 2. Change dictionary to `backend`.
     a. Run `startup.sh` to set up the virtual environment.
