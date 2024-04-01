@@ -6,7 +6,7 @@ sudo apt install python3-pip -y
 
 python3 -m venv venv
 source venv/bin/activate
-python3 -m pip install -r OneOnOne/requirements.txt
+python3 -m pip install -r main/requirements.txt
 
-python3 backend/main/manage.py makemigrations
-python3 backend/main/manage.py migrate
+python3 main/manage.py makemigrations
+python3 main/manage.py migrate

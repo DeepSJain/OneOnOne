@@ -1,1 +1,2 @@
-python3 backend/main/manage.py runserver
+source venv/bin/activate
+python3 main/manage.py runserver
