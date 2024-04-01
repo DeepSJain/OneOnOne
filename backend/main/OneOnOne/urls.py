@@ -48,4 +48,4 @@ urlpatterns = [
     
     path('api/', include(router.urls)),
 
-] + static("image_dir/", document_root="users/image_dir") + static("static/", document_root="../../../frontend")  # + fromend_urls
+] + static("image_dir/", document_root="users/image_dir")  # + static("static/", document_root="../../../frontend")  # + fromend_urls
