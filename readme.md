@@ -16,7 +16,8 @@ Frontend: https://csc309-frontend.onrender.com/
     b. Run `run.sh` to start the backend server.
     c. Run `mail_server.sh` to start the mail server.
         - Emails that are sent will be printed to the console.
+    d. Backend server will be running on `http://localhost:8000/api/`.
 3. Change dictionary to `frontend`.
     a. run `startup.sh` to install the necessary packages.
     b. run `run.sh` to start the frontend server.
-4. Open your browser and go to `http://localhost:3000/` to see the application.
+    c. Frontend server will be running on `http://localhost:3000/`.
