@@ -4,8 +4,6 @@ import { NavigationButtons, back } from '../../components/navigation_buttons/nav
 
 import Summary from '../../components/summary/summary';
 
-import { useNavigate } from 'react-router-dom';
-
 function Main() {
     return (
         <main className="prose p-4">
