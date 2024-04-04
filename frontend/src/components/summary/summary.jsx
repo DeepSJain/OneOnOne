@@ -12,13 +12,11 @@ import withRouter from '../../components/with_router/with_router';
 let token = localStorage.getItem("token");
 
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
+    let red = Math.floor(Math.random() * 200);
+    let green = Math.floor(Math.random() * 200);
+    let blue = Math.floor(Math.random() * 200);
+    return "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+}
   
 
 class Summary extends Component {
