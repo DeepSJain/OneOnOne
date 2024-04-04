@@ -61,7 +61,7 @@ class SetAvailability extends Component {
                 })
             }).then(response => response.json()).then(data => {
                 if (data.id) {
-                    showAlert("Event added", "success");
+                    showAlert("Timeslot added", "success");
                     this.getCalendarApi().addEvent({
                         id: data.id,
                         start: start,
@@ -71,7 +71,7 @@ class SetAvailability extends Component {
                     });
                     resolve(data);
                 } else {
-                    showAlert("Error adding event", "error");
+                    showAlert("Error adding timeslot", "error");
                     // reject("Error adding event");
                 }
             });
@@ -87,12 +87,12 @@ class SetAvailability extends Component {
                 }
             }).then(response => {
                 if (response.status === 204) {
-                    // showAlert("Event deleted", "success");
+                    // showAlert("Timeslot deleted", "success");
                     event.remove();
                     resolve();
                 } else {
-                    showAlert("Error deleting event", "error");
-                    // reject("Error deleting event");
+                    showAlert("Error deleting timeslot", "error");
+                    // reject("Error deleting timeslot");
                 }
             });
         });

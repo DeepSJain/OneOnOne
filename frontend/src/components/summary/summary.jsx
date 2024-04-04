@@ -11,6 +11,16 @@ import withRouter from '../../components/with_router/with_router';
 
 let token = localStorage.getItem("token");
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  
+
 class Summary extends Component {
     constructor(props) {
         super(props);
@@ -47,13 +57,14 @@ class Summary extends Component {
         let calendar_events = [];
 
         this.state.events.forEach(event => {
+            let color = getRandomColor();
             event.contacts.forEach(contact => {
                 if (contact.meeting_scheduled) {
                     calendar_events.push({
                         title: event.name + " - " + contact.name,
                         start: contact.meeting_start_time,
                         end: contact.meeting_end_time,
-                        color: config.colors.meeting_color
+                        color: color
                     });
                 }
             });
